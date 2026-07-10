@@ -1,6 +1,10 @@
 <div align="center">
   <h1>Minecraft Setup Protocol</h1>
   <p>The language-neutral contract between Minecraft setup publishers and client setup managers.</p>
+
+  [![CI](https://github.com/lutzseverino/minecraft-setup-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/lutzseverino/minecraft-setup-protocol/actions/workflows/ci.yml)
+  [![Releases](https://img.shields.io/github/v/release/lutzseverino/minecraft-setup-protocol?include_prereleases)](https://github.com/lutzseverino/minecraft-setup-protocol/releases)
+  [![License: MIT](https://img.shields.io/badge/license-MIT-2f3437)](LICENSE)
 </div>
 
 Minecraft Setup Protocol defines the declarative document a server publishes to
