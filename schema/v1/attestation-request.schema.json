@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:minecraft-setup:attestation-request:v1",
+  "title": "Minecraft Setup Attestation Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocolVersion",
+    "challenge",
+    "manifestFingerprint",
+    "profileId",
+    "client"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "challenge": {
+      "type": "string",
+      "pattern": "^(?:[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{4}-?){3}[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{4}$"
+    },
+    "manifestFingerprint": {
+      "type": "string",
+      "pattern": "^msm-v1-sha256:[a-f0-9]{64}$"
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "client": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^(?=.*\\S)[^\\u0000-\\u001F\\u007F-\\u009F]+$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^(?=.*\\S)[^\\u0000-\\u001F\\u007F-\\u009F]+$"
+        }
+      }
+    }
+  }
+}
+

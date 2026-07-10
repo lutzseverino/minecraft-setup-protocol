@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:minecraft-setup:attestation-response:v1",
+  "title": "Minecraft Setup Attestation Response v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "manifestFingerprint"],
+  "properties": {
+    "status": {
+      "const": "accepted"
+    },
+    "manifestFingerprint": {
+      "type": "string",
+      "pattern": "^msm-v1-sha256:[a-f0-9]{64}$"
+    }
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:minecraft-setup:problem:v1",
+  "title": "Minecraft Setup Protocol Problem v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "title", "status", "code"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "status": {
+      "type": "integer",
+      "minimum": 400,
+      "maximum": 599
+    },
+    "code": {
+      "enum": [
+        "invalid_request",
+        "challenge_invalid",
+        "fingerprint_mismatch",
+        "profile_invalid",
+        "challenge_expired",
+        "rate_limited",
+        "attestation_unavailable"
+      ]
+    }
+  }
+}
+

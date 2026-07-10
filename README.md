@@ -15,14 +15,18 @@ those requests are reviewed and safely applied.
 
 ## Protocol V1
 
-Version 1 consists of four normative parts:
+Version 1 is defined by these normative artifacts:
 
 | Artifact | Purpose |
 | --- | --- |
 | [`schema/v1/manifest.schema.json`](schema/v1/manifest.schema.json) | Structural JSON Schema 2020-12 contract |
+| [`schema/v1/attestation-request.schema.json`](schema/v1/attestation-request.schema.json) | Setup attestation request contract |
+| [`schema/v1/attestation-response.schema.json`](schema/v1/attestation-response.schema.json) | Successful attestation response contract |
+| [`schema/v1/problem.schema.json`](schema/v1/problem.schema.json) | Machine-readable protocol error contract |
 | [`spec/v1/manifest.md`](spec/v1/manifest.md) | Semantic validation and resource behavior |
 | [`spec/v1/canonicalization.md`](spec/v1/canonicalization.md) | Normalization and stable fingerprints |
 | [`spec/v1/http.md`](spec/v1/http.md) | Discovery and publication over HTTPS |
+| [`spec/v1/attestation.md`](spec/v1/attestation.md) | Optional setup challenge and attestation exchange |
 
 The fixtures under [`fixtures/v1`](fixtures/v1) are executable conformance
 examples. Their catalog records whether each document is valid, the expected
@@ -43,6 +47,11 @@ The JavaScript modules in [`src`](src) are a reference validator and
 canonicalizer for this repository's fixtures. They are not a runtime dependency
 or privileged implementation of the protocol.
 
+The optional attestation exchange lets a server ask a player to run the setup
+manager before joining. It is a workflow signal, not remote proof that the
+player's files remain unchanged. Servers needing a trusted client handshake
+must use a separately reviewed client component.
+
 ## Development
 
 ```bash
@@ -51,9 +60,9 @@ npm test
 npm run validate
 ```
 
-The protocol itself follows Semantic Versioning because implementations consume
-it mechanically. Application and plugin product versions are independent; see
-the [versioning policy](spec/versioning.md).
+The protocol follows Semantic Versioning because implementations consume it
+mechanically. See the [versioning reference](docs/reference/versioning.md) and
+the [documentation index](docs/README.md).
 
 ## License
 
