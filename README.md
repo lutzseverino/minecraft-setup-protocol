@@ -66,9 +66,8 @@ npm run validate
 
 ## Documentation
 
-Start with the [documentation index](docs/README.md). The repository's versioning
-policy and compatibility expectations are documented in the
-[versioning reference](docs/reference/versioning.md).
+Start with the [documentation index](docs/README.md). Documentation is organized
+by reader intent so durable guidance has one predictable home.
 
 ## License
 
