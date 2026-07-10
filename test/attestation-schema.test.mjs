@@ -48,5 +48,5 @@ test("attestation request rejects weak or ambiguous codes", async () => {
 
   assert.equal(validate({ ...base, challenge: "short" }), false);
   assert.equal(validate({ ...base, challenge: "0123-ILOU-89AB-CDEF" }), false);
+  assert.equal(validate({ ...base, challenge: "-01234567-89ABCDEF-" }), true);
 });
-

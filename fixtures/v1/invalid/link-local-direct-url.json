@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "link-local-url",
+  "displayName": "Link Local URL",
+  "server": {
+    "name": "Link Local URL",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Link Local URL",
+    "launcherProfileName": "Link Local URL"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "link-local-file",
+      "name": "Link local file",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "link-local.jar",
+      "source": {
+        "kind": "direct",
+        "url": "https://169.254.169.254/link-local.jar"
+      },
+      "hashes": {
+        "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    }
+  ]
+}
+

@@ -51,6 +51,14 @@
       "error": "resource.url.public_https"
     },
     {
+      "path": "invalid/link-local-direct-url.json",
+      "error": "resource.url.public_https"
+    },
+    {
+      "path": "invalid/private-ipv6-direct-url.json",
+      "error": "resource.url.public_https"
+    },
+    {
       "path": "invalid/direct-url-without-file-name.json",
       "error": "schema.invalid"
     },

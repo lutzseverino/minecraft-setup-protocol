@@ -17,7 +17,7 @@
     },
     "challenge": {
       "type": "string",
-      "pattern": "^(?:[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{4}-?){3}[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]{4}$"
+      "pattern": "^(?=(?:-*[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z]){16}-*$)[0-9A-HJKMNP-TV-Za-hjkmnp-tv-z-]+$"
     },
     "manifestFingerprint": {
       "type": "string",
@@ -50,4 +50,3 @@
     }
   }
 }
-
