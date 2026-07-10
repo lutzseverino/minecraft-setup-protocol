@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "2026.07.1",
+  "id": "example-fabric",
+  "displayName": "Example Fabric",
+  "server": {
+    "name": "Example Fabric",
+    "address": "fabric.example.com:25566"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Example Fabric",
+    "launcherProfileName": "Example Fabric"
+  },
+  "profiles": [
+    {
+      "id": "light",
+      "label": "Light",
+      "recommendedMemoryMb": 3072,
+      "includesShaders": false
+    },
+    {
+      "id": "visual",
+      "label": "Better graphics",
+      "recommendedMemoryMb": 6144,
+      "includesShaders": true
+    }
+  ],
+  "resources": [
+    {
+      "id": "fabric-api",
+      "name": "Fabric API",
+      "resourceType": "mod",
+      "target": "mods",
+      "required": true,
+      "profiles": [],
+      "fileName": "fabric-api-0.128.2+1.21.6.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "P7dR8mSH",
+        "version": "F5TVHWcE"
+      },
+      "hashes": {
+        "sha512": "b6d0ec0aec40069cb1fa2159c126d027d7f95e3f6260a3e88ebe9c47f3cb716d1170af8e2e4ff3d4108ce5eeaea70002a889547578374d4d6dfa45755e99431e"
+      }
+    },
+    {
+      "id": "server-options",
+      "name": "Server options",
+      "resourceType": "config",
+      "target": "config",
+      "required": true,
+      "profiles": [],
+      "fileName": "example-server.json",
+      "source": {
+        "kind": "direct",
+        "url": "https://downloads.example.com/example-server.json"
+      },
+      "hashes": {
+        "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    }
+  ],
+  "serverEntry": {
+    "name": "Example Fabric",
+    "address": "fabric.example.com:25566"
+  }
+}

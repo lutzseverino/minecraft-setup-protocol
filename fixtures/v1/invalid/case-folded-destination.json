@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "case-folded-overlap",
+  "displayName": "Case Folded Overlap",
+  "server": {
+    "name": "Case Folded Overlap",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Case Folded Overlap",
+    "launcherProfileName": "Case Folded Overlap"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "upper",
+      "name": "Upper",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "Example.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "AAAA0001",
+        "version": "AAAA0002"
+      }
+    },
+    {
+      "id": "lower",
+      "name": "Lower",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "example.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "BBBB0001",
+        "version": "BBBB0002"
+      }
+    }
+  ]
+}

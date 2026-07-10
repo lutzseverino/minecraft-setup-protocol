@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "private-url",
+  "displayName": "Private URL",
+  "server": {
+    "name": "Private URL",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Private URL",
+    "launcherProfileName": "Private URL"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "private-file",
+      "name": "Private file",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "private.jar",
+      "source": {
+        "kind": "direct",
+        "url": "https://127.0.0.1/private.jar"
+      },
+      "hashes": {
+        "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    }
+  ]
+}

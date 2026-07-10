@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "unknown-resource-profile",
+  "displayName": "Unknown Resource Profile",
+  "server": {
+    "name": "Unknown Resource Profile",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Unknown Resource Profile",
+    "launcherProfileName": "Unknown Resource Profile"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "fabric-api",
+      "name": "Fabric API",
+      "resourceType": "mod",
+      "target": "mods",
+      "profiles": ["missing"],
+      "fileName": "fabric-api.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "P7dR8mSH",
+        "version": "F5TVHWcE"
+      }
+    }
+  ]
+}

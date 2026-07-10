@@ -1,0 +1,457 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:minecraft-setup:manifest:v1",
+  "title": "Minecraft Setup Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "manifestVersion",
+    "id",
+    "displayName",
+    "server",
+    "minecraft",
+    "install",
+    "profiles",
+    "resources"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "manifestVersion": {
+      "$ref": "#/$defs/id"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "displayName": {
+      "$ref": "#/$defs/label"
+    },
+    "server": {
+      "$ref": "#/$defs/server"
+    },
+    "minecraft": {
+      "$ref": "#/$defs/minecraft"
+    },
+    "install": {
+      "$ref": "#/$defs/install"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/profile"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "maxItems": 512,
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "serverEntry": {
+      "$ref": "#/$defs/server"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "minecraft": {
+            "type": "object",
+            "properties": {
+              "loader": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "none"
+                  }
+                },
+                "required": ["kind"]
+              }
+            },
+            "required": ["loader"]
+          }
+        },
+        "required": ["minecraft"]
+      },
+      "then": {
+        "properties": {
+          "resources": {
+            "type": "array",
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "resourceType": {
+                    "const": "mod"
+                  }
+                },
+                "required": ["resourceType"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?=.*\\S)[^\\u0000-\\u001F\\u007F-\\u009F]+$"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[A-Za-z0-9._-]+$"
+    },
+    "label": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/text"
+        },
+        {
+          "type": "string",
+          "maxLength": 160
+        }
+      ]
+    },
+    "serverAddress": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^(?!.*://)(?!.*[/\\s])[^\\u0000-\\u001F\\u007F-\\u009F]+$"
+    },
+    "portableName": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/text"
+        },
+        {
+          "type": "string",
+          "maxLength": 255,
+          "pattern": "^(?![. ]*$)(?!.*[<>:\"/\\\\|?*])(?!.+[. ]$).+$"
+        }
+      ]
+    },
+    "hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sha512": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{128}$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "server": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "address"],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/label"
+        },
+        "address": {
+          "$ref": "#/$defs/serverAddress"
+        }
+      }
+    },
+    "minecraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "loader"],
+      "properties": {
+        "version": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "string",
+              "maxLength": 80
+            }
+          ]
+        },
+        "loader": {
+          "$ref": "#/$defs/loader"
+        }
+      }
+    },
+    "loader": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {
+            "kind": {
+              "const": "none"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "version"],
+          "properties": {
+            "kind": {
+              "const": "fabric"
+            },
+            "version": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/text"
+                },
+                {
+                  "type": "string",
+                  "maxLength": 80
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameDirectoryName", "launcherProfileName"],
+      "properties": {
+        "gameDirectoryName": {
+          "$ref": "#/$defs/portableName"
+        },
+        "launcherProfileName": {
+          "$ref": "#/$defs/label"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "recommendedMemoryMb"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "$ref": "#/$defs/label"
+        },
+        "recommendedMemoryMb": {
+          "type": "integer",
+          "minimum": 512,
+          "maximum": 65536
+        },
+        "includesShaders": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "resourceType",
+        "target",
+        "fileName",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/label"
+        },
+        "resourceType": {
+          "enum": ["mod", "resource_pack", "shader_pack", "config"]
+        },
+        "target": {
+          "enum": ["mods", "resourcepacks", "shaderpacks", "config"]
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "fileName": {
+          "$ref": "#/$defs/portableName"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "hashes": {
+          "$ref": "#/$defs/hashes"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "resourceType": {
+                "const": "mod"
+              }
+            },
+            "required": ["resourceType"]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "const": "mods"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "resourceType": {
+                "const": "resource_pack"
+              }
+            },
+            "required": ["resourceType"]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "const": "resourcepacks"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "resourceType": {
+                "const": "shader_pack"
+              }
+            },
+            "required": ["resourceType"]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "const": "shaderpacks"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "resourceType": {
+                "const": "config"
+              }
+            },
+            "required": ["resourceType"]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "const": "config"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "const": "direct"
+                  }
+                },
+                "required": ["kind"]
+              }
+            },
+            "required": ["source"]
+          },
+          "then": {
+            "required": ["hashes"],
+            "properties": {
+              "hashes": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "sha512": true
+                    },
+                    "required": ["sha512"]
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "sha256": true
+                    },
+                    "required": ["sha256"]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "project", "version"],
+          "properties": {
+            "kind": {
+              "const": "modrinth"
+            },
+            "project": {
+              "$ref": "#/$defs/id"
+            },
+            "version": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "url"],
+          "properties": {
+            "kind": {
+              "const": "direct"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https?://"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

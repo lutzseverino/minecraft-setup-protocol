@@ -1,0 +1,62 @@
+{
+  "valid": [
+    {
+      "path": "valid/minimal-vanilla.json",
+      "fingerprint": "msm-v1-sha256:1dfce0075ec03e4bdc2bfe58b6006af3c738814b3de33f053bed5017628df0a3"
+    },
+    {
+      "path": "valid/fabric-resources.json",
+      "fingerprint": "msm-v1-sha256:8c189e37fc4a7a66fd89e6757e6691e427b351b336704c4ea7b9eb4726e2a20a"
+    }
+  ],
+  "invalid": [
+    {
+      "path": "invalid/unknown-field.json",
+      "error": "schema.invalid"
+    },
+    {
+      "path": "invalid/fabric-without-version.json",
+      "error": "schema.invalid"
+    },
+    {
+      "path": "invalid/duplicate-profile-id.json",
+      "error": "profile.id.duplicate"
+    },
+    {
+      "path": "invalid/duplicate-resource-id.json",
+      "error": "resource.id.duplicate"
+    },
+    {
+      "path": "invalid/unknown-resource-profile.json",
+      "error": "resource.profile.unknown"
+    },
+    {
+      "path": "invalid/overlapping-destination.json",
+      "error": "resource.destination.overlap"
+    },
+    {
+      "path": "invalid/triple-overlapping-destination.json",
+      "error": "resource.destination.overlap"
+    },
+    {
+      "path": "invalid/case-folded-destination.json",
+      "error": "resource.destination.overlap"
+    },
+    {
+      "path": "invalid/windows-reserved-name.json",
+      "error": "portable_name.reserved"
+    },
+    {
+      "path": "invalid/private-direct-url.json",
+      "error": "resource.url.public_https"
+    },
+    {
+      "path": "invalid/direct-url-without-file-name.json",
+      "error": "schema.invalid"
+    },
+    {
+      "path": "invalid/explicit-null.json",
+      "error": "schema.invalid"
+    }
+  ]
+}

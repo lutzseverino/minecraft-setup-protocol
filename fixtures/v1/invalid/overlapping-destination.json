@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "overlapping-destination",
+  "displayName": "Overlapping Destination",
+  "server": {
+    "name": "Overlapping Destination",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Overlapping Destination",
+    "launcherProfileName": "Overlapping Destination"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "first",
+      "name": "First",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "shared.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "P7dR8mSH",
+        "version": "F5TVHWcE"
+      }
+    },
+    {
+      "id": "second",
+      "name": "Second",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "shared.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "AABBCCDD",
+        "version": "11223344"
+      }
+    }
+  ]
+}

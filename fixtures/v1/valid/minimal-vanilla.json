@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "example-vanilla",
+  "displayName": "Example Vanilla",
+  "server": {
+    "name": "Example Vanilla",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "none"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Example Vanilla",
+    "launcherProfileName": "Example Vanilla"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": []
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "duplicate-resource",
+  "displayName": "Duplicate Resource",
+  "server": {
+    "name": "Duplicate Resource",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Duplicate Resource",
+    "launcherProfileName": "Duplicate Resource"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "same-id",
+      "name": "First",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "first.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "P7dR8mSH",
+        "version": "F5TVHWcE"
+      }
+    },
+    {
+      "id": "same-id",
+      "name": "Second",
+      "resourceType": "mod",
+      "target": "mods",
+      "fileName": "second.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "AABBCCDD",
+        "version": "11223344"
+      }
+    }
+  ]
+}

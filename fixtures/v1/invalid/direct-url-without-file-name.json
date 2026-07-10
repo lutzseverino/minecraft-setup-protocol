@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "missing-file-name",
+  "displayName": "Missing File Name",
+  "server": {
+    "name": "Missing File Name",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Missing File Name",
+    "launcherProfileName": "Missing File Name"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [
+    {
+      "id": "missing-file-name",
+      "name": "Missing File Name",
+      "resourceType": "mod",
+      "target": "mods",
+      "source": {
+        "kind": "direct",
+        "url": "https://downloads.example.com/"
+      },
+      "hashes": {
+        "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    }
+  ]
+}

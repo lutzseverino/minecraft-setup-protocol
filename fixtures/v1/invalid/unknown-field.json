@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "unknown-field",
+  "displayName": "Unknown Field",
+  "server": {
+    "name": "Unknown Field",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "none"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Unknown Field",
+    "launcherProfileName": "Unknown Field"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [],
+  "runThis": "anything"
+}

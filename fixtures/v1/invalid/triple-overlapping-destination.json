@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "triple-overlap",
+  "displayName": "Triple Overlap",
+  "server": {
+    "name": "Triple Overlap",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric",
+      "version": "0.16.14"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Triple Overlap",
+    "launcherProfileName": "Triple Overlap"
+  },
+  "profiles": [
+    {
+      "id": "light",
+      "label": "Light",
+      "recommendedMemoryMb": 3072
+    },
+    {
+      "id": "visual",
+      "label": "Visual",
+      "recommendedMemoryMb": 6144
+    }
+  ],
+  "resources": [
+    {
+      "id": "first-light",
+      "name": "First light",
+      "resourceType": "mod",
+      "target": "mods",
+      "profiles": ["light"],
+      "fileName": "shared.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "AAAA0001",
+        "version": "AAAA0002"
+      }
+    },
+    {
+      "id": "visual",
+      "name": "Visual",
+      "resourceType": "mod",
+      "target": "mods",
+      "profiles": ["visual"],
+      "fileName": "shared.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "BBBB0001",
+        "version": "BBBB0002"
+      }
+    },
+    {
+      "id": "second-light",
+      "name": "Second light",
+      "resourceType": "mod",
+      "target": "mods",
+      "profiles": ["light"],
+      "fileName": "shared.jar",
+      "source": {
+        "kind": "modrinth",
+        "project": "CCCC0001",
+        "version": "CCCC0002"
+      }
+    }
+  ]
+}

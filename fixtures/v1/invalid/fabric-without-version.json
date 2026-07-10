@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "fabric-without-version",
+  "displayName": "Fabric Without Version",
+  "server": {
+    "name": "Fabric Without Version",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "fabric"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Fabric Without Version",
+    "launcherProfileName": "Fabric Without Version"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": []
+}

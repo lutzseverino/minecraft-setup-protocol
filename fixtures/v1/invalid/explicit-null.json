@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "explicit-null",
+  "displayName": "Explicit Null",
+  "server": {
+    "name": "Explicit Null",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "none"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Explicit Null",
+    "launcherProfileName": "Explicit Null"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    }
+  ],
+  "resources": [],
+  "serverEntry": null
+}

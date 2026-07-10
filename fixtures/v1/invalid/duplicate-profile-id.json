@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "1",
+  "id": "duplicate-profile",
+  "displayName": "Duplicate Profile",
+  "server": {
+    "name": "Duplicate Profile",
+    "address": "play.example.com"
+  },
+  "minecraft": {
+    "version": "1.21.6",
+    "loader": {
+      "kind": "none"
+    }
+  },
+  "install": {
+    "gameDirectoryName": "Duplicate Profile",
+    "launcherProfileName": "Duplicate Profile"
+  },
+  "profiles": [
+    {
+      "id": "default",
+      "label": "Default",
+      "recommendedMemoryMb": 4096
+    },
+    {
+      "id": "default",
+      "label": "Also default",
+      "recommendedMemoryMb": 6144
+    }
+  ],
+  "resources": []
+}
