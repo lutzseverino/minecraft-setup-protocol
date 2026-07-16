@@ -36,7 +36,9 @@ export function canonicalManifest(manifest) {
 }
 
 export function fingerprintManifest(manifest) {
-  const digest = createHash("sha256").update(canonicalManifest(manifest), "utf8").digest("hex");
+  const digest = createHash("sha256")
+    .update(canonicalManifest(manifest), "utf8")
+    .digest("hex");
   return `${FINGERPRINT_PREFIX}${digest}`;
 }
 

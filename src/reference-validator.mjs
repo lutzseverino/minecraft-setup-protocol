@@ -42,7 +42,13 @@ export function validateSemantics(manifest, options = {}) {
 
   for (const [index, profile] of manifest.profiles.entries()) {
     if (profileIds.has(profile.id)) {
-      errors.push(error("profile.id.duplicate", `/profiles/${index}/id`, "Profile IDs must be unique."));
+      errors.push(
+        error(
+          "profile.id.duplicate",
+          `/profiles/${index}/id`,
+          "Profile IDs must be unique.",
+        ),
+      );
     }
     profileIds.add(profile.id);
   }
@@ -50,7 +56,13 @@ export function validateSemantics(manifest, options = {}) {
   for (const [index, resource] of manifest.resources.entries()) {
     const path = `/resources/${index}`;
     if (resourceIds.has(resource.id)) {
-      errors.push(error("resource.id.duplicate", `${path}/id`, "Resource IDs must be unique."));
+      errors.push(
+        error(
+          "resource.id.duplicate",
+          `${path}/id`,
+          "Resource IDs must be unique.",
+        ),
+      );
     }
     resourceIds.add(resource.id);
 
@@ -71,7 +83,12 @@ export function validateSemantics(manifest, options = {}) {
     }
 
     if (resource.source.kind === "direct") {
-      validateDirectUrl(resource.source.url, path, allowLocalDevelopment, errors);
+      validateDirectUrl(
+        resource.source.url,
+        path,
+        allowLocalDevelopment,
+        errors,
+      );
     }
 
     const fileName = resource.fileName;
@@ -94,7 +111,12 @@ export function validateSemantics(manifest, options = {}) {
   return errors;
 }
 
-function validateDirectUrl(urlValue, resourcePath, allowLocalDevelopment, errors) {
+function validateDirectUrl(
+  urlValue,
+  resourcePath,
+  allowLocalDevelopment,
+  errors,
+) {
   let url;
   try {
     url = new URL(urlValue);
@@ -113,8 +135,11 @@ function validateDirectUrl(urlValue, resourcePath, allowLocalDevelopment, errors
   }
 
   const local = isLocalHost(url.hostname);
-  const allowed = url.protocol === "https:" && !local
-    || allowLocalDevelopment && local && ["http:", "https:"].includes(url.protocol);
+  const allowed =
+    (url.protocol === "https:" && !local) ||
+    (allowLocalDevelopment &&
+      local &&
+      ["http:", "https:"].includes(url.protocol));
   if (!allowed) {
     errors.push(
       error(
@@ -160,26 +185,41 @@ function checkPortableName(value, path, errors) {
 
 function isLocalHost(hostValue) {
   const host = hostValue.toLowerCase().replace(/^\[/, "").replace(/\]$/, "");
-  if (host === "localhost" || host.endsWith(".localhost") || host.endsWith(".local")) {
+  if (
+    host === "localhost" ||
+    host.endsWith(".localhost") ||
+    host.endsWith(".local")
+  ) {
     return true;
   }
-  if (host === "::1" || host === "0:0:0:0:0:0:0:1" || host.startsWith("fe80:") || host.startsWith("fc") || host.startsWith("fd")) {
+  if (
+    host === "::1" ||
+    host === "0:0:0:0:0:0:0:1" ||
+    host.startsWith("fe80:") ||
+    host.startsWith("fc") ||
+    host.startsWith("fd")
+  ) {
     return true;
   }
 
   const octets = host.split(".").map(Number);
-  if (octets.length !== 4 || octets.some((octet) => !Number.isInteger(octet) || octet < 0 || octet > 255)) {
+  if (
+    octets.length !== 4 ||
+    octets.some((octet) => !Number.isInteger(octet) || octet < 0 || octet > 255)
+  ) {
     return false;
   }
 
   const [first, second] = octets;
-  return first === 0
-    || first === 10
-    || first === 127
-    || first >= 224
-    || first === 169 && second === 254
-    || first === 172 && second >= 16 && second <= 31
-    || first === 192 && second === 168;
+  return (
+    first === 0 ||
+    first === 10 ||
+    first === 127 ||
+    first >= 224 ||
+    (first === 169 && second === 254) ||
+    (first === 172 && second >= 16 && second <= 31) ||
+    (first === 192 && second === 168)
+  );
 }
 
 function error(code, path, message) {
@@ -200,7 +240,9 @@ function validateUnicodeNormalization(value, path, errors) {
     return;
   }
   if (Array.isArray(value)) {
-    value.forEach((item, index) => validateUnicodeNormalization(item, `${path}/${index}`, errors));
+    value.forEach((item, index) => {
+      validateUnicodeNormalization(item, `${path}/${index}`, errors);
+    });
     return;
   }
   if (value && typeof value === "object") {

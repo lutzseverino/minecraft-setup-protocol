@@ -29,7 +29,9 @@ for (const fixture of catalog.valid) {
 }
 
 for (const fixture of catalog.invalid) {
-  const result = validate(await readJson(new URL(`fixtures/v1/${fixture.path}`, root)));
+  const result = validate(
+    await readJson(new URL(`fixtures/v1/${fixture.path}`, root)),
+  );
   if (result.valid) {
     failures.push(`${fixture.path} should be invalid, but passed.`);
     continue;
@@ -42,7 +44,9 @@ for (const fixture of catalog.invalid) {
 }
 
 if (failures.length > 0) {
-  throw new Error(`Fixture validation failed:\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  throw new Error(
+    `Fixture validation failed:\n${failures.map((failure) => `- ${failure}`).join("\n")}`,
+  );
 }
 
 console.log(

@@ -58,11 +58,15 @@ must use a separately reviewed client component.
 
 ## Development
 
+Install Node.js 24 and npm 11.6.2, then:
+
 ```bash
 npm ci
-npm test
-npm run validate
+npm run check
 ```
+
+`npm run check` formats and lints the maintained protocol artifacts, runs the
+reference implementation tests, and validates every conformance fixture.
 
 ## Documentation
 

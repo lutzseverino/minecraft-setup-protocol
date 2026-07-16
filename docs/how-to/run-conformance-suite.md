@@ -4,16 +4,14 @@ Validate the reference implementation and every shared fixture.
 
 ## Steps
 
-Install Node.js 22, then run:
+Install Node.js 24 and npm 11.6.2, then run:
 
 ```bash
 npm ci
-npm test
-npm run validate
+npm run check
 ```
 
 ## Verification
 
-The test command reports no failures. The validation command reports the number
-of valid and invalid protocol fixtures it checked.
-
+The check reports no formatting, lint, or test failures and prints the number of
+valid and invalid protocol fixtures it validated.

@@ -9,7 +9,10 @@ import {
 import { createProtocolValidator } from "../src/reference-validator.mjs";
 
 const schema = JSON.parse(
-  await readFile(new URL("../schema/v1/manifest.schema.json", import.meta.url), "utf8"),
+  await readFile(
+    new URL("../schema/v1/manifest.schema.json", import.meta.url),
+    "utf8",
+  ),
 );
 const validate = createProtocolValidator(schema);
 
@@ -34,7 +37,10 @@ test("canonicalization inserts defaults and sorts set-valued profile references"
     label: "Visual",
     recommendedMemoryMb: 6144,
   });
-  value.minecraft = { version: "1.21.6", loader: { kind: "fabric", version: "0.16.14" } };
+  value.minecraft = {
+    version: "1.21.6",
+    loader: { kind: "fabric", version: "0.16.14" },
+  };
   value.resources.push({
     id: "example-mod",
     name: "Example Mod",
@@ -63,9 +69,7 @@ function manifest() {
       gameDirectoryName: "Example Server",
       launcherProfileName: "Example Server",
     },
-    profiles: [
-      { id: "default", label: "Default", recommendedMemoryMb: 4096 },
-    ],
+    profiles: [{ id: "default", label: "Default", recommendedMemoryMb: 4096 }],
     resources: [],
   };
 }

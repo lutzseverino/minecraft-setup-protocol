@@ -2,18 +2,23 @@
   "name": "minecraft-setup-protocol",
   "private": true,
   "version": "1.1.1",
+  "packageManager": "npm@11.6.2",
   "type": "module",
   "scripts": {
+    "check": "npm run lint && npm test && npm run validate",
+    "format": "biome check . --write",
+    "lint": "biome check .",
     "test": "node --test",
     "validate": "node scripts/validate-fixtures.mjs"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.1",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "canonicalize": "^3.0.0"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "license": "MIT"
 }

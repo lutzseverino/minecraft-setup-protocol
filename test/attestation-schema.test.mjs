@@ -7,7 +7,9 @@ import addFormats from "ajv-formats";
 
 async function validator(name) {
   const schema = JSON.parse(
-    await readFile(new URL(`../schema/v1/${name}.schema.json`, import.meta.url)),
+    await readFile(
+      new URL(`../schema/v1/${name}.schema.json`, import.meta.url),
+    ),
   );
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   addFormats(ajv);

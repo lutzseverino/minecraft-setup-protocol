@@ -1,0 +1,25 @@
+{
+  "standards-version": 1,
+  "standards-release": "1.0.0",
+  "profiles": ["common", "documentation", "node-npm", "node-protocol"],
+  "variables": {},
+  "local-fragments": {},
+  "repository-owned": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "package-lock.json",
+    "schema/**",
+    "fixtures/**",
+    "src/**",
+    "test/**",
+    "docs/README.md",
+    "docs/decisions/**",
+    "docs/explanation/**",
+    "docs/how-to/**",
+    "docs/reference/**",
+    "docs/tutorials/**",
+    ".github/workflows/ci.yml",
+    ".github/workflows/release.yml"
+  ]
+}
