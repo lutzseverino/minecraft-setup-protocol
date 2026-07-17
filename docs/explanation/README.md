@@ -14,7 +14,7 @@ Explanation documents describe how the system works and why its boundaries exist
 
 - factual lookup material; use [Reference](../reference/README.md)
 - step-by-step tasks; use [How-To Guides](../how-to/README.md)
-- durable choices with rejected alternatives; use [Decisions](../decisions/README.md)
+- durable choices with rejected alternatives; use a decision record
 - temporary notes that are not intended as durable documentation
 
 ## Required Shape

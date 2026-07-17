@@ -4,11 +4,9 @@ Documentation is organized by reader intent.
 
 ## Sections
 
-- `tutorials/` teaches through guided learning paths.
 - `how-to/` solves focused operational or implementation tasks.
 - `reference/` captures factual lookup material.
 - `explanation/` records concepts, rationale, and architecture.
-- `decisions/` stores durable decision records.
 - `_templates/` contains starting points for new documents.
 
 ## Writing Rules
@@ -22,11 +20,9 @@ Documentation is organized by reader intent.
 
 ## Documents
 
-- [Tutorials](tutorials/README.md)
 - [How-To Guides](how-to/README.md)
 - [Reference](reference/README.md)
 - [Explanation](explanation/README.md)
-- [Decisions](decisions/README.md)
 - [Templates](_templates/README.md)
 
 ## Repository Notes
